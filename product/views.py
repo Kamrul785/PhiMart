@@ -24,7 +24,7 @@ class ProductViewSet(ModelViewSet):
     
     """
     
-    queryset = Product.objects.all()
+    # queryset = Product.objects.all()
     serializer_class = ProductSerializer    
     filter_backends = [DjangoFilterBackend, SearchFilter,OrderingFilter]
     filterset_class = ProductFilter
@@ -33,6 +33,8 @@ class ProductViewSet(ModelViewSet):
     ordering_fields = ['price', 'created_at']
     permission_classes = [IsAdminOrReadOnly]
     
+    def get_queryset(self):
+        return Product.objects.prefetch_related('images').all()
     
     def list(self, request, *args, **kwargs):
         """ Retrieve all the products """
