@@ -1,6 +1,7 @@
 from django.urls import path, include
 from product.views import ProductViewSet, CategoryViewSet, ReviewViewSet, ProductImageViewsSet
-from order.views import CartViewSet, CartItemViewSet, OrderViewSet, initialize_payment, payment_success,payment_fail,payment_cancel
+from order.views import CartViewSet, CartItemViewSet, OrderViewSet, initialize_payment, payment_success, payment_cancel, payment_fail
+
 from rest_framework_nested  import routers  
 
 router = routers.DefaultRouter()
