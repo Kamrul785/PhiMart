@@ -50,6 +50,7 @@ class Review(models.Model):
     
     
     
+    
 # Step to build an API 
 # 1. model banate hobe
 # 2. serializer banate hobe

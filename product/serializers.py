@@ -33,9 +33,6 @@ class ProductSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('price couldnot be negative')
         return price
     
-    
-
-
 
 class SimpleUserSerializer(serializers.ModelSerializer):
     
@@ -52,6 +49,7 @@ class SimpleUserSerializer(serializers.ModelSerializer):
 
 class ReviewSerializer(serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
+    print(user)
     class Meta:
         model = Review
         fields = ['id','user','product', 'ratings','comment']
@@ -63,4 +61,5 @@ class ReviewSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         product_id = self.context['product_id']
         review = Review.objects.create(product_id = product_id, **validated_data)
+        print(review)
         return review
